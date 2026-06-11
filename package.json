@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "flowpilot-ai",
-=======
-  "name": "tanstack_start_ts",
->>>>>>> b6e0b305167355c2b8303e0f25f8e87c90700d5c
   "private": true,
   "sideEffects": false,
   "type": "module",
@@ -44,13 +40,6 @@
     "@radix-ui/react-toggle-group": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/vite": "^4.2.1",
-<<<<<<< HEAD
-=======
-    "@tanstack/react-query": "^5.83.0",
-    "@tanstack/react-router": "^1.168.25",
-    "@tanstack/react-start": "^1.167.50",
-    "@tanstack/router-plugin": "^1.167.28",
->>>>>>> b6e0b305167355c2b8303e0f25f8e87c90700d5c
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -64,10 +53,7 @@
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.71.2",
     "react-resizable-panels": "^4.6.5",
-<<<<<<< HEAD
     "react-router-dom": "^7.17.0",
-=======
->>>>>>> b6e0b305167355c2b8303e0f25f8e87c90700d5c
     "recharts": "^2.15.4",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.5.0",
@@ -79,10 +65,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
-<<<<<<< HEAD
-=======
-    "@lovable.dev/vite-tanstack-config": "^2.3.2",
->>>>>>> b6e0b305167355c2b8303e0f25f8e87c90700d5c
     "@types/node": "^22.16.5",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
@@ -93,17 +75,9 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^15.15.0",
-<<<<<<< HEAD
-=======
-    "nitro": "3.0.260603-beta",
->>>>>>> b6e0b305167355c2b8303e0f25f8e87c90700d5c
     "prettier": "^3.7.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^7.3.1"
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b6e0b305167355c2b8303e0f25f8e87c90700d5c
