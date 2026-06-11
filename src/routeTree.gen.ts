@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppProjectsRouteImport } from './routes/_app.projects'
+import { Route as AppHrRouteImport } from './routes/_app.hr'
 import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
 import { Route as AppCrmRouteImport } from './routes/_app.crm'
 import { Route as AppCommandRouteImport } from './routes/_app.command'
@@ -30,6 +32,16 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppProjectsRoute = AppProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrRoute = AppHrRouteImport.update({
+  id: '/hr',
+  path: '/hr',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
@@ -58,6 +70,8 @@ export interface FileRoutesByFullPath {
   '/command': typeof AppCommandRoute
   '/crm': typeof AppCrmRouteWithChildren
   '/dashboard': typeof AppDashboardRoute
+  '/hr': typeof AppHrRoute
+  '/projects': typeof AppProjectsRoute
   '/crm/$leadId': typeof AppCrmLeadIdRoute
 }
 export interface FileRoutesByTo {
@@ -66,6 +80,8 @@ export interface FileRoutesByTo {
   '/command': typeof AppCommandRoute
   '/crm': typeof AppCrmRouteWithChildren
   '/dashboard': typeof AppDashboardRoute
+  '/hr': typeof AppHrRoute
+  '/projects': typeof AppProjectsRoute
   '/crm/$leadId': typeof AppCrmLeadIdRoute
 }
 export interface FileRoutesById {
@@ -76,6 +92,8 @@ export interface FileRoutesById {
   '/_app/command': typeof AppCommandRoute
   '/_app/crm': typeof AppCrmRouteWithChildren
   '/_app/dashboard': typeof AppDashboardRoute
+  '/_app/hr': typeof AppHrRoute
+  '/_app/projects': typeof AppProjectsRoute
   '/_app/crm/$leadId': typeof AppCrmLeadIdRoute
 }
 export interface FileRouteTypes {
@@ -86,9 +104,19 @@ export interface FileRouteTypes {
     | '/command'
     | '/crm'
     | '/dashboard'
+    | '/hr'
+    | '/projects'
     | '/crm/$leadId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/command' | '/crm' | '/dashboard' | '/crm/$leadId'
+  to:
+    | '/'
+    | '/login'
+    | '/command'
+    | '/crm'
+    | '/dashboard'
+    | '/hr'
+    | '/projects'
+    | '/crm/$leadId'
   id:
     | '__root__'
     | '/'
@@ -97,6 +125,8 @@ export interface FileRouteTypes {
     | '/_app/command'
     | '/_app/crm'
     | '/_app/dashboard'
+    | '/_app/hr'
+    | '/_app/projects'
     | '/_app/crm/$leadId'
   fileRoutesById: FileRoutesById
 }
@@ -128,6 +158,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_app/projects': {
+      id: '/_app/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof AppProjectsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr': {
+      id: '/_app/hr'
+      path: '/hr'
+      fullPath: '/hr'
+      preLoaderRoute: typeof AppHrRouteImport
+      parentRoute: typeof AppRoute
     }
     '/_app/dashboard': {
       id: '/_app/dashboard'
@@ -175,12 +219,16 @@ interface AppRouteChildren {
   AppCommandRoute: typeof AppCommandRoute
   AppCrmRoute: typeof AppCrmRouteWithChildren
   AppDashboardRoute: typeof AppDashboardRoute
+  AppHrRoute: typeof AppHrRoute
+  AppProjectsRoute: typeof AppProjectsRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppCommandRoute: AppCommandRoute,
   AppCrmRoute: AppCrmRouteWithChildren,
   AppDashboardRoute: AppDashboardRoute,
+  AppHrRoute: AppHrRoute,
+  AppProjectsRoute: AppProjectsRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
