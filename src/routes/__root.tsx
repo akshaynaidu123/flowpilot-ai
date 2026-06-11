@@ -7,10 +7,12 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AuthContext, getCurrentUser, type DemoUser } from "../lib/auth";
+import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -77,11 +79,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "FlowPilot AI — Automate Business. Amplify Teams." },
+      { name: "description", content: "AI-powered business automation across CRM, HR, projects, and finance." },
+      { name: "author", content: "FlowPilot AI" },
+      { property: "og:title", content: "FlowPilot AI" },
+      { property: "og:description", content: "Automate Business. Amplify Teams." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -115,11 +117,24 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
+  const [user, setUser] = useState<DemoUser | null>(null);
+  const refresh = useCallback(() => setUser(getCurrentUser()), []);
+  useEffect(() => {
+    refresh();
+    const h = () => refresh();
+    window.addEventListener("flowpilot:auth", h);
+    window.addEventListener("storage", h);
+    return () => {
+      window.removeEventListener("flowpilot:auth", h);
+      window.removeEventListener("storage", h);
+    };
+  }, [refresh]);
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AuthContext.Provider value={{ user, refresh }}>
+        <Outlet />
+        <Toaster richColors position="top-right" />
+      </AuthContext.Provider>
     </QueryClientProvider>
   );
 }
