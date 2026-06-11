@@ -68,9 +68,7 @@ export function AppSidebar() {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>
-            Workspace
-          </SidebarGroupLabel>
+          <SidebarGroupLabel>Workspace</SidebarGroupLabel>
 
           <SidebarGroupContent>
             <SidebarMenu>
@@ -82,7 +80,7 @@ export function AppSidebar() {
                     tooltip={item.label}
                   >
                     <Link to={item.to}>
-                      <item.icon />
+                      <item.icon className="h-4 w-4" />
                       <span>{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -93,9 +91,7 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>
-            System
-          </SidebarGroupLabel>
+          <SidebarGroupLabel>System</SidebarGroupLabel>
 
           <SidebarGroupContent>
             <SidebarMenu>
@@ -107,7 +103,7 @@ export function AppSidebar() {
                     tooltip={item.label}
                   >
                     <Link to={item.to}>
-                      <item.icon />
+                      <item.icon className="h-4 w-4" />
                       <span>{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -120,7 +116,7 @@ export function AppSidebar() {
 
       <SidebarFooter>
         <div className="px-2 py-2 text-[10px] text-muted-foreground group-data-[collapsible=icon]:hidden">
-          v1.0 · Contest demo
+          v1.0 · Contest Demo
         </div>
       </SidebarFooter>
     </Sidebar>
