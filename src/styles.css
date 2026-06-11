@@ -95,6 +95,14 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --brand-from: oklch(0.55 0.22 280);
+  --brand-to: oklch(0.65 0.2 320);
+  --success: oklch(0.7 0.17 155);
+  --warning: oklch(0.78 0.16 75);
+  --danger: oklch(0.62 0.23 25);
+  --gradient-brand: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+  --glass-bg: color-mix(in oklab, var(--background) 70%, transparent);
+  --shadow-elegant: 0 12px 40px -12px color-mix(in oklab, var(--brand-from) 35%, transparent);
 }
 
 .dark {
@@ -130,6 +138,9 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+  --brand-from: oklch(0.62 0.22 280);
+  --brand-to: oklch(0.72 0.2 320);
+  --glass-bg: color-mix(in oklab, var(--background) 60%, transparent);
 }
 
 @layer base {
@@ -141,4 +152,26 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+@utility glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+}
+
+@utility brand-gradient {
+  background-image: var(--gradient-brand);
+}
+
+@utility brand-text {
+  background-image: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility shadow-elegant {
+  box-shadow: var(--shadow-elegant);
 }
